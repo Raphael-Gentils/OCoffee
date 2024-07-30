@@ -9,21 +9,22 @@ const express = require('express');
 
 const app = express();
 
-const router = require('./src/routers');
+const router = require('./src/routers/index');
 
 // Configuration moteur de templates
 app.set('view engine', 'ejs');
 // Configuration répertoire views
-const securedPathToViews = path.join(__dirname, 'src/views');
+const securedPathToViews = path.join(__dirname, 'views');
 app.set('views', securedPathToViews);
 // configuration répertoire static
 const securedPathToAssets = path.join(__dirname, 'public');
-app.set(express.static(securedPathToAssets));
+app.use(express.static(securedPathToAssets));
 
 app.use(router);
 
 // Last middleware 404
-const notFound = require('src/middlewares/404.js');
+const notFound = require('./src/middlewares/404');
+app.use(notFound);
 
 const port = process.env.PORT || 5000;
 
