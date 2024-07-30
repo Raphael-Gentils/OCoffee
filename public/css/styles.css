@@ -144,6 +144,41 @@
 	margin: 2rem auto 0 auto;
 }
 
+/* __________ Product CSS __________ */
+
+#product {
+	margin: 4rem 0;
+	display: flex;
+	flex-direction: column;
+	gap: 4rem;
+}
+
+#product img {
+	margin: 1.5rem;
+	border-radius: 0.7rem;
+	box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+	object-fit: cover;
+	object-position: center;
+	height: 50%;
+	max-height: 500px;
+}
+
+#product h1 {
+	padding: 2.5rem;
+	text-align: center;
+	font-size: 2rem;
+	font-weight: bolder;
+	color: var(--color-orange);
+}
+
+#product p .true {
+	color: lime;
+}
+
+#product p .false {
+	color: red;
+}
+
 /* __________ 404 CSS __________ */
 
 #page404 {

@@ -1,5 +1,27 @@
 <%- include('partials/header') %>
 
-<main></main>
+        <main>
+            <section id="product">
+
+                <% if (locals.product) { %>
+                
+                    <img src="/images/coffees/<%= product.reference %>.png" alt="<%= product.name %>">
+
+                    <article>
+                        <div>
+                            <p id="availability">dispo</p>
+                            <h1><%= product.name %></h1>
+                            <p><%= product.origine %></p>
+                            <p><%= product.type %></p>
+                            <p><%= product.description %></p>
+                            <p><%= product.price %> €/kg</p>
+                            <a class="button" id="catalog-button" href="/catalog">Catalogue</a>
+                        </div>
+                    </article>
+
+                <% } %>
+
+            </section>
+        </main>
 
 <%- include('partials/footer') %>

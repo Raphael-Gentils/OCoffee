@@ -39,7 +39,6 @@ const mainController = {
 
 		try {
 			const product = await dataMapper.getProductById(id);
-
 			res.render('product', { product });
 		} catch (error) {
 			console.log('NAME', error.name);

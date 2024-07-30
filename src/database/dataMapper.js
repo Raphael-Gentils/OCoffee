@@ -25,7 +25,7 @@ const dataMapper = {
 
 		const product = await client.query(query);
 
-		console.log(product.rows[0]);
+		return product.rows[0];
 	},
 };
 
