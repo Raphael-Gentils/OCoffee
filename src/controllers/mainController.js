@@ -1,52 +1,30 @@
-const { error } = require('console');
 const dataMapper = require('../database/dataMapper');
 
 const mainController = {
-	async homePage(req, res) {
-		try {
-			const newProducts = await dataMapper.getNewProducts();
+	homePage: async (req, res) => {
+		const latestProducts = await dataMapper.getLatestProducts();
 
-			res.render('home', { newProducts });
-		} catch (error) {
-			console.log('NAME', error.name);
-			console.log('CAUSE', error.cause);
-			console.log('STACK', error.stack);
-
-			res.send(error.message);
-		}
+		res.render('home', { latestProducts });
 	},
 
-	async catalogPage(req, res) {
-		try {
-			const products = await dataMapper.getAllProducts();
+	catalogPage: async (req, res) => {
+		const products = await dataMapper.getAllProducts();
+		const categories = await dataMapper.getCategories();
+		const productsByCategory = await dataMapper.getProductsByCategory();
 
-			res.render('catalog', { products });
-		} catch (error) {
-			console.log('NAME', error.name);
-			console.log('CAUSE', error.cause);
-			console.log('STACK', error.stack);
-
-			res.send(error.message);
-		}
+		res.render('catalog', { products, categories });
 	},
 
-	async productPage(req, res, next) {
-		const id = Number.parseInt(req.params.id, 10);
+	productPage: async (req, res, next) => {
+		const id = req.params.id;
 
-		if (Number.isNaN(id)) {
+		const product = await dataMapper.getProductById(id);
+
+		if (!product) {
 			return next();
 		}
 
-		try {
-			const product = await dataMapper.getProductById(id);
-			res.render('product', { product });
-		} catch (error) {
-			console.log('NAME', error.name);
-			console.log('CAUSE', error.cause);
-			console.log('STACK', error.stack);
-
-			res.send(error.message);
-		}
+		res.render('product', { product });
 	},
 };
 

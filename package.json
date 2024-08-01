@@ -4,7 +4,7 @@
 	"description": "Site vitrine d'une boutique de café",
 	"main": "index.js",
 	"scripts": {
-		"dev": "node --watch index.js"
+		"dev": "node-dev index.js"
 	},
 	"keywords": [],
 	"author": "",
@@ -15,6 +15,7 @@
 		"eslint": "^9.8.0",
 		"express": "^4.19.2",
 		"express-session": "^1.18.0",
+		"node-dev": "^8.0.0",
 		"pg": "^8.12.0",
 		"prettier": "^3.3.3"
 	}

@@ -1,6 +1,11 @@
 // variables d'environnement
 require('dotenv').config();
 
+const {
+	notFound,
+	errorHandler,
+} = require('./src/middlewares/handlers/errorHandlers');
+
 // Sécurisation des chemins
 const path = require('path');
 
@@ -13,18 +18,21 @@ const router = require('./src/routers/index');
 
 // Configuration moteur de templates
 app.set('view engine', 'ejs');
+
 // Configuration répertoire views
 const securedPathToViews = path.join(__dirname, 'views');
 app.set('views', securedPathToViews);
+
 // configuration répertoire static
 const securedPathToAssets = path.join(__dirname, 'public');
 app.use(express.static(securedPathToAssets));
 
 app.use(router);
 
-// Last middleware 404
-const notFound = require('./src/middlewares/404');
+// 404
 app.use(notFound);
+// Gestion d'erreurs
+app.use(errorHandler);
 
 const port = process.env.PORT || 5000;
 

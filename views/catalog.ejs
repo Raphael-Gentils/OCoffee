@@ -3,6 +3,19 @@
 		<main>
 			<section id="catalog">
 				<h1>Notre catalogue</h1>
+				
+				<select name="categories" id="categories-select">
+					<option value="" disabled selected>--Filtrer par catégorie--</option>
+
+					<% if (locals.categories?.length) { %>
+						<% for( let index = 0; index < categories.length; index++ ) { %>
+
+					<option value="<%= categories[index].type %>"><%= categories[index].type %> (<%= categories[index].count %>)</option>
+						
+						<% } %>
+					<% } %>
+
+				</select>
 
 				<div
 					class="articles only-display-3-articles"
@@ -13,7 +26,7 @@
 					
 						<% products.forEach(product => { %>
 						
-							<article>
+							<article data-category="<%= product.type %>">
 								<img
 									src="/images/coffees/<%= product.reference %>.png"
 									alt="<%= product.name %>"

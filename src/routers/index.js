@@ -1,14 +1,15 @@
+const mainController = require('../controllers/mainController');
+const { catchErrors } = require('../middlewares/handlers/errorHandlers');
+
 const router = require('express').Router();
 
-const mainController = require('../controllers/mainController');
-
 // page d'accueil
-router.get('/', mainController.homePage);
+router.get('/', catchErrors(mainController.homePage));
 
-// page catalogue
-router.get('/catalog', mainController.catalogPage);
+// pages catalogue
+router.get('/catalog', catchErrors(mainController.catalogPage));
 
 // page produit
-router.get('/product/:id', mainController.productPage);
+router.get('/product/:id(\\d+)', catchErrors(mainController.productPage));
 
 module.exports = router;

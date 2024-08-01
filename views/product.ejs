@@ -9,12 +9,24 @@
 
                     <article>
                         <div>
-                            <p id="availability">dispo</p>
-                            <h1><%= product.name %></h1>
-                            <p><%= product.origine %></p>
-                            <p><%= product.type %></p>
-                            <p><%= product.description %></p>
-                            <p><%= product.price %> €/kg</p>
+                            <p class="availability <%= product.disponibility %>">
+                                <% if (product.disponibility === true) { %>
+                                    Disponible
+                                <% } else { %>
+                                    En rupture de stock
+                                <% } %>
+                            </p>
+                            <h1 class="name"><%= product.name %></h1>
+                            <div class="description">
+                                <div class="details">
+                                    <p class="origine"><span class="label">Origine :</span> <%= product.origine %></p>
+                                    <p class="type"><span class="label">Catégorie :</span> <%= product.type %></p>
+                                    <p class="price"><%= product.price %> €/kg</p>
+                                </div>
+                                <div class="text">
+                                    <p><%= product.description %></p>
+                                </div>
+                            </div>
                             <a class="button" id="catalog-button" href="/catalog">Catalogue</a>
                         </div>
                     </article>

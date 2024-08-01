@@ -1,5 +1,4 @@
 const catalogButton = document.getElementById('catalog-button');
-const availabilityStatus = document.getElementById('availability');
 
 function showAllProductsOnCatalog() {
 	if (catalogButton) {
@@ -11,15 +10,3 @@ function showAllProductsOnCatalog() {
 }
 
 showAllProductsOnCatalog();
-
-function displayAvailability() {
-	if (availabilityStatus && window.product) {
-		const availability = window.product.disponibility;
-		availabilityStatus.classList.add(availability ? 'true' : 'false');
-		availabilityStatus.textContent = availability
-			? 'Disponible'
-			: 'Indisponible';
-	}
-}
-
-displayAvailability();

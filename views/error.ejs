@@ -1,0 +1,27 @@
+<%- include('partials/header') %>
+
+<main>
+	<section id="page404">
+
+		<% if (locals.status === 404) { %>
+			<img src="/images/404.gif" alt="404" />
+		<% } %>
+
+		<div>
+			<h1><%= status %></h1>
+
+			<p><%= error %></p>
+
+			<% if (locals.stack) { %>
+				<pre><%= stack %></pre>
+			<% } %>
+			
+			<p>
+				<a href="/">Retour à l'accueil</a>
+			</p>
+		</div>
+
+	</section>
+</main>
+
+<%- include('partials/footer') %>

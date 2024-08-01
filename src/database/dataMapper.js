@@ -1,31 +1,54 @@
 const client = require('./client');
 
 const dataMapper = {
-	async getNewProducts() {
+	getLatestProducts: async () => {
 		const query = 'SELECT * FROM coffee ORDER BY random() LIMIT 3;';
 
-		const newProducts = await client.query(query);
+		const { rows } = await client.query(query);
 
-		return newProducts.rows;
+		if (!rows.length) {
+			return null;
+		}
+
+		return rows;
 	},
 
-	async getAllProducts() {
+	getAllProducts: async () => {
 		const query = 'SELECT * FROM coffee;';
 
-		const products = await client.query(query);
+		const { rows } = await client.query(query);
 
-		return products.rows;
+		return rows;
 	},
 
-	async getProductById(id) {
+	getCategories: async () => {
+		const query = 'SELECT type, COUNT(type) FROM coffee GROUP BY type;';
+
+		const { rows } = await client.query(query);
+
+		return rows;
+	},
+
+	getProductsByCategory: async (category) => {
+		const query = {
+			text: 'SELECT * FROM coffee WHERE type = $1;',
+			values: [category],
+		};
+
+		const { rows } = await client.query(query);
+
+		console.log(rows);
+	},
+
+	getProductById: async (id) => {
 		const query = {
 			text: 'SELECT * FROM coffee WHERE id = $1;',
 			values: [id],
 		};
 
-		const product = await client.query(query);
+		const { rows } = await client.query(query);
 
-		return product.rows[0];
+		return rows[0];
 	},
 };
 

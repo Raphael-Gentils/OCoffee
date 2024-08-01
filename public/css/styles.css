@@ -93,6 +93,13 @@
 	font-size: 2rem;
 }
 
+#catalog select {
+	display: block;
+	margin-top: 4rem;
+	margin-left: auto;
+	padding: 3px 5px;
+}
+
 #catalog .articles {
 	display: grid;
 	grid-template-columns: repeat(
@@ -154,16 +161,44 @@
 }
 
 #product img {
-	margin: 1.5rem;
 	border-radius: 0.7rem;
-	box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+	box-shadow:
+		rgba(0, 0, 0, 0.25) 0px 54px 55px,
+		rgba(0, 0, 0, 0.12) 0px -12px 30px,
+		rgba(0, 0, 0, 0.12) 0px 4px 6px,
+		rgba(0, 0, 0, 0.17) 0px 12px 13px,
+		rgba(0, 0, 0, 0.09) 0px -3px 5px;
 	object-fit: cover;
 	object-position: center;
 	height: 50%;
 	max-height: 500px;
 }
 
-#product h1 {
+#product article {
+	box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+	border-radius: 0.7rem;
+}
+
+#product article div {
+	padding: 2rem;
+	display: flex;
+	flex-direction: column;
+	gap: 1.2rem;
+}
+
+#product .availability {
+	align-self: flex-end;
+}
+
+#product .true {
+	color: #3fff00;
+}
+
+#product .false {
+	color: red;
+}
+
+#product .name {
 	padding: 2.5rem;
 	text-align: center;
 	font-size: 2rem;
@@ -171,12 +206,33 @@
 	color: var(--color-orange);
 }
 
-#product p .true {
-	color: lime;
+#product .description {
+	padding: unset;
+	align-self: flex-start;
+	flex-direction: row;
+	gap: 5rem;
 }
 
-#product p .false {
-	color: red;
+#peoduct .details {
+	align-self: flex-start;
+	flex-grow: 2;
+	flex-direction: column;
+	gap: 0.8rem;
+}
+
+#product .label {
+	text-decoration: underline;
+	text-underline-offset: 0.25em;
+	color: var(--color-orange);
+}
+
+#product .text {
+	align-self: center;
+}
+
+#product .button {
+	max-width: 20rem;
+	margin: auto;
 }
 
 /* __________ 404 CSS __________ */
