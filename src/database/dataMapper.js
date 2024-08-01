@@ -29,17 +29,6 @@ const dataMapper = {
 		return rows;
 	},
 
-	getProductsByCategory: async (category) => {
-		const query = {
-			text: 'SELECT * FROM coffee WHERE type = $1;',
-			values: [category],
-		};
-
-		const { rows } = await client.query(query);
-
-		console.log(rows);
-	},
-
 	getProductById: async (id) => {
 		const query = {
 			text: 'SELECT * FROM coffee WHERE id = $1;',

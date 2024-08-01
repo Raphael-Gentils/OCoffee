@@ -10,7 +10,6 @@ const mainController = {
 	catalogPage: async (req, res) => {
 		const products = await dataMapper.getAllProducts();
 		const categories = await dataMapper.getCategories();
-		const productsByCategory = await dataMapper.getProductsByCategory();
 
 		res.render('catalog', { products, categories });
 	},

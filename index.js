@@ -1,18 +1,19 @@
 // variables d'environnement
 require('dotenv').config();
 
+// Serveur express
+const express = require('express');
+const app = express();
+
+// Sécurisation des chemins
+const path = require('path');
+
 const {
 	notFound,
 	errorHandler,
 } = require('./src/middlewares/handlers/errorHandlers');
 
-// Sécurisation des chemins
-const path = require('path');
-
-// Serveur express
-const express = require('express');
-
-const app = express();
+// const map = require('./src/middlewares/map');
 
 const router = require('./src/routers/index');
 
@@ -29,6 +30,7 @@ app.use(express.static(securedPathToAssets));
 
 app.use(router);
 
+// app.use(map);
 // 404
 app.use(notFound);
 // Gestion d'erreurs
